@@ -7,31 +7,75 @@ Install Docker:
 Build python 2 container using python 2 base image from docker.
 
 ```
-docker image build -t demo-py2 python_upgrade_demo/
-docker run --name "demo-py2-run1" demo-python2 
-
+docker image build -t demo-py2:v0.0 python_upgrade_demo/
 ```
 
-Update base image to use python3 instead and check the difference in the results of division for verification.
+Run Python2 container from the image
 
 ```
-docker image build -t demo-python3 python_upgrade_demo/
-docker run --name "demo-python3-run1" demo-python3 
+docker run --name "demo-py2-run1" demo-py2:v0.0
 ```
 
-
-# FFMPEG build with H264 and AAC
-
-```
-cd ffmpeg_demo
-```
-
-Multistage build creating portable ffmpeg build and copying it to the application container
+Update base image to use python3 instead.
 
 ```
-docker image build -t ffmpeg_x264 .
-docker container run ffmpeg_x264
+docker image build -t demo-python3:v0.0 python_upgrade_demo/
 ```
 
-Make changes to bash script by uncommenting the ffprobe command and commenting ffmpeg one.
-Redeploy and run using above docker commands.
+Run a new container with Python3 image and check the difference in the results of division for verification.
+```
+docker run --name "demo-python3-run1" demo-python3:v0.0 
+```
+
+To list all images
+```
+docker images
+```
+
+To list all running containers
+```
+docker ps
+```
+
+To stop a running container
+
+```
+docker stop demo-py2-run1
+```
+
+To remove a container
+
+```
+docker rm demo-py2-run1
+```
+
+To remove an image
+
+```
+docker rmi demo-python3-run1
+```
+
+# PART 2: Container with FFMPEG 
+
+Build the container with ffmpeg and source code
+```
+docker image build -t "demo-ffmpeg:v0.0" ffmpeg_demo/
+```
+
+Run the container 
+```
+docker run --name "ffmpeg_run1" demo-ffmpeg:v0.0
+```
+
+Make changes to the transcode.sh script by uncommenting the ffmpeg command using vp9. Redeploy the code
+
+```
+docker image build -t "demo-ffmpeg:v0.0" ffmpeg_demo/
+docker run --name "ffmpeg_run2" demo-ffmpeg:v0.0
+```
+
+Log into bash
+```
+docker exec -it "ffmpeg_run2" /bin/bash
+
+```
