@@ -1,7 +1,10 @@
 FROM python:2
 
+# copying soure code
 ADD demo_py2_3.py /
 
-RUN pip install numpy
+# installing a dependency
+RUN pip install pytest
 
+# run the container
 CMD ["python",  "demo_py2_3.py"]
