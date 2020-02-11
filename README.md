@@ -10,6 +10,11 @@ Build python 2 container using python 2 base image from docker.
 docker image build -t demo-py2:v0.0 python_upgrade_demo/
 ```
 
+To see the built image
+```
+docker images
+```
+
 Run Python2 container from the image
 
 ```
@@ -34,7 +39,7 @@ docker images
 
 To list all running containers
 ```
-docker ps
+docker ps -a
 ```
 
 To stop a running container
@@ -72,6 +77,10 @@ Make changes to the transcode.sh script by uncommenting the ffmpeg command using
 ```
 docker image build -t "demo-ffmpeg:v0.0" ffmpeg_demo/
 docker run --name "ffmpeg_run2" demo-ffmpeg:v0.0
+```
+Checking logs
+```
+docker container logs demo-py2-run5
 ```
 
 Log into bash
