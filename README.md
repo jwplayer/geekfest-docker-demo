@@ -1,5 +1,3 @@
-git # Python upgrade demo
-
 Install Docker:
 
 # https://docs.docker.com/install/
