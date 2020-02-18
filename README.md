@@ -140,7 +140,7 @@ docker image build -t "demo-ffmpeg:v1.1" ffmpeg_demo/
 
 Run the container 
 ```
-docker run --rm --name "demo-ffmpeg-run3" demo-ffmpeg:v1.1
+docker run --name "demo-ffmpeg-run3" demo-ffmpeg:v1.1
 ```
 
 Log into shell
