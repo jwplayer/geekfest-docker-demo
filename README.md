@@ -93,9 +93,16 @@ Make changes to the transcode.sh script by uncommenting the ffmpeg command using
 docker image build -t "demo-ffmpeg:v0.0" ffmpeg_demo/
 docker run --name "ffmpeg_run2" demo-ffmpeg:v0.0
 ```
+
 Checking logs
 ```
 docker container logs demo-py2-run5
+```
+
+Replace entry point with
+
+```
+tail -f /dev/null
 ```
 
 Log into bash
