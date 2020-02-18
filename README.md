@@ -5,7 +5,7 @@ Install Docker:
 Build python 2 container using python 2 base image from docker.
 
 ```
-docker image build -t demo-py2:v0.0 python_upgrade_demo/
+docker image build -t demo-py:v0.0 python_upgrade_demo/
 ```
 
 To see the built image
@@ -16,18 +16,29 @@ docker images
 Run Python2 container from the image
 
 ```
-docker run --name "demo-py2-run1" demo-py2:v0.0
+docker run --name "demo-py-run1" demo-py:v0.0
 ```
 
 Update base image to use python3 instead.
 
 ```
-docker image build -t demo-python3:v0.0 python_upgrade_demo/
+docker image build -t demo-py:v1.0 python_upgrade_demo/
 ```
 
 Run a new container with Python3 image and check the difference in the results of division for verification.
 ```
-docker run --name "demo-python3-run1" demo-python3:v0.0 
+docker run --name "demo-py-run2" demo-py:v1.0
+```
+
+Update code to fix the bug.
+
+```
+docker image build -t demo-py:v1.1 python_upgrade_demo/
+```
+
+Run a new container with Python3 image and check the difference in the results of division for verification.
+```
+docker run --name "demo-py-run3" demo-python3:v0.0 
 ```
 
 To list all images
@@ -56,6 +67,12 @@ To remove an image
 
 ```
 docker rmi demo-python3-run1
+```
+
+To remove all the containers
+
+```
+docker rm $(docker ps -a -q)
 ```
 
 # PART 2: Container with FFMPEG 
